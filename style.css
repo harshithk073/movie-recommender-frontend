@@ -1,0 +1,207 @@
+:root {
+  --teal: #3ec6c6;
+  --cream: #f9f7f1;
+  --orange: #ffbe76;
+  --yellow: #ffe66d;
+  --text: #2d3436;
+  --muted: #7f8c8d;
+  --white: #fff;
+  --shadow: 0 2px 16px rgba(62,198,198,0.07);
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  background: var(--teal);
+  color: var(--white);
+  padding: 1em 1.5em;
+  box-shadow: var(--shadow);
+}
+
+.logo {
+  font-size: 1.3em;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.hero {
+  text-align: center;
+  padding: 2.2em 1em 1.3em 1em;
+  background: linear-gradient(90deg, var(--cream) 60%, var(--yellow) 100%);
+}
+
+.hero h1 {
+  font-size: 2.1em;
+  margin: 0 0 0.35em 0;
+  color: var(--teal);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  font-size: 1.1em;
+  color: var(--muted);
+  margin: 0;
+}
+
+.recommendation-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7em;
+  margin: 2em 0 1em 0;
+  flex-wrap: wrap;
+}
+
+.recommendation-form input {
+  padding: 0.7em 1.2em;
+  border-radius: 22px;
+  border: 1px solid #d1d8e0;
+  font-size: 1.08em;
+  outline: none;
+  min-width: 200px;
+  background: var(--white);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transition: border 0.2s;
+}
+
+.recommendation-form input:focus {
+  border: 1.5px solid var(--teal);
+}
+
+.recommendation-form button {
+  background: linear-gradient(90deg, var(--teal), var(--orange));
+  color: var(--white);
+  border: none;
+  border-radius: 22px;
+  padding: 0.7em 1.7em;
+  font-size: 1.08em;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: background 0.2s, transform 0.13s;
+}
+
+.recommendation-form button:hover {
+  background: linear-gradient(90deg, var(--orange), var(--teal));
+  transform: scale(1.05);
+}
+
+.recommendation-results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.3em;
+  margin: 2em 0;
+}
+
+.movie-card {
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(62,198,198,0.10);
+  padding: 1.5em 1.2em 1.2em 1.2em;
+  min-width: 230px;
+  max-width: 320px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  transition: box-shadow 0.19s, transform 0.15s;
+  cursor: pointer;
+  position: relative;
+  border: 1.5px solid #e7e7e7;
+  animation: fadeInCard 0.7s;
+}
+
+@keyframes fadeInCard {
+  0% { opacity: 0; transform: translateY(30px) scale(0.97);}
+  100% { opacity: 1; transform: translateY(0) scale(1);}
+}
+
+.movie-card:hover {
+  box-shadow: 0 8px 32px rgba(255,190,118,0.13), 0 2px 16px rgba(62,198,198,0.12);
+  border: 1.5px solid var(--teal);
+  transform: translateY(-4px) scale(1.03);
+}
+
+.movie-title {
+  font-size: 1.15em;
+  font-weight: 600;
+  margin-bottom: 0.15em;
+  color: var(--teal);
+  text-align: center;
+  letter-spacing: 0.2px;
+}
+
+.movie-tagline {
+  font-style: italic;
+  color: var(--orange);
+  margin-bottom: 0.55em;
+  margin-top: 0.15em;
+  text-align: center;
+  font-size: 1.01em;
+}
+
+.movie-meta {
+  font-size: 0.97em;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 0.4em;
+  line-height: 1.5;
+}
+
+.movie-overview {
+  margin-top: 0.7em;
+  font-size: 1em;
+  color: var(--text);
+  background: var(--cream);
+  border-radius: 8px;
+  padding: 0.9em 1em 0.8em 1em;
+  text-align: left;
+  box-sizing: border-box;
+  box-shadow: 0 1px 6px rgba(255, 230, 109, 0.07);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.45s cubic-bezier(.7,0,.3,1), opacity 0.3s;
+}
+
+.movie-card.expanded .movie-overview {
+  max-height: 400px;
+  opacity: 1;
+  transition: max-height 0.45s cubic-bezier(.7,0,.3,1), opacity 0.3s;
+}
+
+footer {
+  text-align: center;
+  padding: 2em 0 1em 0;
+  color: var(--muted);
+  font-size: 1em;
+  letter-spacing: 1px;
+  background: none;
+}
+
+@media (max-width: 900px) {
+  .recommendation-results {
+    gap: 1em;
+  }
+  .movie-card {
+    min-width: 80vw;
+    max-width: 95vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 1.3em; }
+  .recommendation-form { flex-direction: column; gap: 0.5em; }
+  .movie-card { padding: 1em 0.7em; }
+}
