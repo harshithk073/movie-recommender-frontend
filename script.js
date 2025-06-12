@@ -11,7 +11,7 @@ recommendBtn.addEventListener('click', () => {
   }
   recommendBtn.disabled = true;
   recommendBtn.textContent = "Loading...";
-  fetch('http://localhost:5000/recommend', {
+  fetch('https://movie-recommender-backend-khmo.onrender.com/recommend', {  // Updated backend URL here
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ movie_title: movieTitle })
